@@ -809,39 +809,39 @@ const consentForm = {
   html: `
     <div style="text-align: left; max-width: 800px; margin: auto;">
       <p>
-        We would like to invite you to take part in an online research project. 
-        The purpose of this research is to investigate how people process health information. 
+        We would like to invite you to take part in an online research project. The purpose of this research is to investigate how people seek information about political news. As part of this research, you will be asked to answer questions about yourself. 
       </p>
       <ul style="list-style-position: outside; padding-left: 20px;">
         <li>You must be at least 18 years old to take part in this research.</li>
         <li>The study will take approximately 15 minutes to complete.</li>
-        <li>You will be compensated $3 for your participation in the study.</li>
+        <li>You will receive approximately $12/hr for your participation in the study.</li>
         <li>The possible risks or discomforts of the study are minimal. You may feel uncomfortable reflecting on and answering some questions.</li>
         <li>There are no direct benefits for participating in the study.</li>
         <li>Your part in this study will be handled in a confidential manner. 
-        Only the researchers will know that you participated in this study. 
-        Any reports or publications based on this research will use only group data and will not identify you or any individual as being part of this project. 
-        The only individually-identifying data we receive from Prolific are your unique identifier and your country.</li>
-        <li>The decision to participate in this research project is up to you. You do not have to participate.</li>
-        <li>Even if you begin the study, you may withdraw at any time. If you do not complete the survey submission, you will not be paid.</li>
       </ul>
       <p>
-        If you have any questions regarding electronic privacy, please feel free to contact Northeastern University’s 
-        Office of Information Security via phone at 617-373-7901, or via email at <a href="mailto:privacy@neu.edu">privacy@neu.edu</a>.
+        Your part in this study will be handled in a confidential manner. 
+        Only the researchers will know that you participated in this study. 
+        Any reports or publications based on this research will use only group data and will not identify you or any individual as being of this project. 
+        The only individually-identifying data we receive from Prolific is your unique identifier. 
+        After we remove identifying details, we may re-use your information for future research studies or share it with other researchers without additional informed consent from you. 
+        The decision to participate in this research project is up to you. 
+        You do not have to participate. 
+        Even if you begin the study, you may withdraw at any time. 
+        If you do not complete the survey submission you will not be paid.
       </p>
       <p>
-        If you have any questions about this study, please feel free to contact the Principal Investigator 
-        Briony Swire-Thompson at <a href="mailto:b.swire-thompson@northeastern.edu">b.swire-thompson@northeastern.edu</a>; the person mainly responsible for the research. 
-        If you have any questions about your rights as a research subject, you can contact Northeastern University’s 
-        Office of Human Subject Research Protection at <a href="mailto:irb@neu.edu">irb@neu.edu</a> or 617-373-4588. You may call anonymously if you wish.
+        If you have any questions about this study, please feel free to contact the Principal Investigator, Briony Swire-Thompson, 
+        at <a href="mailto:b.swire-thompson@northeastern.edu">b.swire-thompson@northeastern.edu</a>; the person mainly responsible for the research. 
+        If you have any questions about your rights as a research subject, you can contact Northeastern University’s Office of Human Subject Research Protection 
+        at <a href="mailto:irb@neu.edu">irb@neu.edu</a> or 617-373-4588. You may call anonymously if you wish. 
       </p>
       <p>
-        This study has been reviewed and approved by the Northeastern University Institutional Review Board (#20-12-16).
+        This study has been reviewed and approved by the Northeastern University Institutional Review Board (#xx-xx-xx).
       </p>
       <p><b>If you do not wish to consent, please exit this website now.</b></p>
       <p>
-        By clicking on the “Consent given” button below you are indicating that you consent to participate in this study. 
-        Please print out a copy of this consent screen or download a copy of the consent form for your records.
+        By clicking on the “Consent given” button below you are indicating that you consent to participate in this study.
       </p>
       <p style="text-align: center;">
         <label style="margin-right: 20px;">
