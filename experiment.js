@@ -1100,6 +1100,69 @@ trials.forEach((claimIndex) => {
 });
 
 
+// VOTING INTENTIONS
+// senatorPool contains exactly the 8 senators shown during the paradigm, in the order they were assigned (paired with trialSenators).
+// We generate one question per senator, asking how likely the participant would be to vote for them if they ran for re-election.
+
+const voteOptions = [
+  'Definitely would not vote for them',
+  'Probably would not vote for them',
+  'Might or might not vote for them',
+  'Probably would vote for them',
+  'Definitely would vote for them'
+];
+
+const senatorVotingIntentions = {
+  type: jsPsychSurveyHtmlForm,
+  preamble: `
+    <p class="jspsych-survey-multi-choice-preamble">
+      During the study, you read about incidents in which a senator was mentioned.
+      For each senator listed below, please indicate how likely you would be to vote
+      for them if they ran for re-election to the U.S. Senate. Disregard whether you
+      are actually eligible to vote for that senator.
+    </p>`,
+  html: (() => {
+    // Build one question block per senator in senatorPool
+    const blocks = senatorPool.map((senator, i) => {
+      const safeName = `senator_vote_${i}`;
+      const optionHtml = voteOptions.map((opt, j) => `
+        <div class="jspsych-survey-multi-choice-option">
+          <input type="radio" id="${safeName}_${j}" name="${safeName}" value="${opt}"
+            class="${safeName}-input incomplete"
+            oninput="document.querySelectorAll('.${safeName}-input').forEach(el => el.classList.remove('incomplete'));">
+          <label for="${safeName}_${j}">${opt}</label>
+        </div>`).join('');
+
+      return `
+        <div class="jspsych-survey-multi-choice-question">
+          <legend>If <strong>${senator}</strong> ran for re-election to the U.S. Senate,
+            how likely would you be to vote for them?</legend>
+          ${optionHtml}
+        </div>`;
+    });
+
+    return blocks.join('') + `
+      <style>
+        .jspsych-survey-multi-choice-question { margin-top:2em; margin-bottom:2em; text-align:left; }
+        .jspsych-survey-multi-choice-option { font-size:10pt; line-height:2; }
+      </style>`;
+  })(),
+  button_label: 'Next',
+  on_load: function() { window.scrollTo(0, 0); },
+  on_finish: function(data) {
+    const r = data.response;
+    const props = {};
+    senatorPool.forEach((senator, i) => {
+      // Store both the senator name and their vote intention so data is self-contained
+      props[`senator_vote_name_${i}`] = senator;
+      props[`senator_vote_intent_${i}`] = r[`senator_vote_${i}`] || '';
+    });
+    jsPsych.data.addProperties(props);
+  }
+};
+
+timeline.push(senatorVotingIntentions);
+
 
 // DEMOGRAPHICS //
 const demographicsQuestions = {
