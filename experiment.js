@@ -1101,592 +1101,245 @@ trials.forEach((claimIndex) => {
 });
 
 
+
 // DEMOGRAPHICS //
 const demographicsQuestions = {
   type: jsPsychSurveyHtmlForm,
-  preamble:
-    `<p class="jspsych-survey-multi-choice-preamble">
-      Using the scales provided, please respond to each question about you as an individual:
-    </p>`,
+  preamble: `<p class="jspsych-survey-multi-choice-preamble">Please answer the following questions about yourself.</p>`,
   html: `
-        <!-- Age -->
 
-        <div class="jspsych-survey-multi-choice-question">
-          <label for="age">How old are you?</label><br>
-          <input 
-            type="number" 
-            id="age" 
-            name="age" 
-            min="18" max="100" 
-            style="padding: 5px; width: 40px;" 
-            class="incomplete"
-            oninput="this.classList.remove('incomplete');"
-          >
-        </div>
-        
+    <!-- Age -->
+    <div class="jspsych-survey-multi-choice-question">
+      <legend>How old are you?</legend>
+      <input type="number" id="age" name="age" min="18" max="100"
+        style="padding:5px; width:70px;"
+        class="incomplete"
+        oninput="this.classList.remove('incomplete');">
+    </div>
 
-        <!-- Race/Ethnicity -->
+    <!-- Gender -->
+    <div class="jspsych-survey-multi-choice-question">
+      <legend>What is your gender?</legend>
+      ${[['Male','gender-male'],['Female','gender-female'],['Non-binary','gender-nonbinary']].map(([label, id]) => `
+      <div class="jspsych-survey-multi-choice-option">
+        <input type="radio" id="${id}" name="gender" value="${label}"
+          class="gender-input incomplete"
+          oninput="
+            document.querySelectorAll('.gender-input').forEach(el => el.classList.remove('incomplete'));
+            document.getElementById('gender-selfdescribe-box').style.display = 'none';
+            document.getElementById('gender_selfdescribe').required = false;
+          ">
+        <label for="${id}">${label}</label>
+      </div>`).join('')}
+      <div class="jspsych-survey-multi-choice-option">
+        <input type="radio" id="gender-selfdescribe" name="gender" value="Prefer to self-describe"
+          class="gender-input incomplete"
+          oninput="
+            document.querySelectorAll('.gender-input').forEach(el => el.classList.remove('incomplete'));
+            document.getElementById('gender-selfdescribe-box').style.display = 'block';
+            document.getElementById('gender_selfdescribe').required = true;
+          ">
+        <label for="gender-selfdescribe">Prefer to self-describe</label>
+      </div>
+      <div id="gender-selfdescribe-box" style="display:none; margin-top:0.5em; margin-left:1.5em;">
+        <input type="text" id="gender_selfdescribe" name="gender_selfdescribe"
+          placeholder="Please describe"
+          style="width:300px; padding:4px;">
+      </div>
+    </div>
 
-        <div class="jspsych-survey-multi-choice-question">
-          <legend>Please indicate how you identify yourself:</legend>
-          <div class="jspsych-survey-multi-choice-option">
-            <input 
-              type="checkbox" 
-              id="race-ethnicity-indigenous" 
-              name="race-ethnicity-indigenous" 
-              value="Indigenous American or Alaskan Native" 
-              class="demographics-race-ethnicity incomplete"
-              oninput="
-                let demographicsRaceEthnicity = document.querySelectorAll(
-                  '.demographics-race-ethnicity'
-                );
-                for (let i = 0; i < demographicsRaceEthnicity.length; i++) {
-                  demographicsRaceEthnicity[i].classList.remove('incomplete');
-                };
-              "
-            >
-            <label for="race-ethnicity-indigenous">Indigenous American or Alaskan Native</label>
-          </div>
-          <div class="jspsych-survey-multi-choice-option">
-            <input 
-              type="checkbox" 
-              id="race-ethnicity-asian" 
-              name="race-ethnicity-asian" 
-              value="Asian or Asian-American" 
-              class="demographics-race-ethnicity incomplete"
-              oninput="
-                let demographicsRaceEthnicity = document.querySelectorAll(
-                  '.demographics-race-ethnicity'
-                );
-                for (let i = 0; i < demographicsRaceEthnicity.length; i++) {
-                  demographicsRaceEthnicity[i].classList.remove('incomplete');
-                };
-              "
-            >
-            <label for="race-ethnicity-asian">Asian or Asian-American</label>
-          </div>
-          <div class="jspsych-survey-multi-choice-option">
-            <input 
-              type="checkbox" 
-              id="race-ethnicity-black" 
-              name="race-ethnicity-black" 
-              value="African-American or Black" 
-              class="demographics-race-ethnicity incomplete"
-              oninput="
-                let demographicsRaceEthnicity = document.querySelectorAll(
-                  '.demographics-race-ethnicity'
-                );
-                for (let i = 0; i < demographicsRaceEthnicity.length; i++) {
-                  demographicsRaceEthnicity[i].classList.remove('incomplete');
-                };
-              "
-            >
-            <label for="race-ethnicity-black">African-American or Black</label>
-          </div>
-          <div class="jspsych-survey-multi-choice-option">
-            <input 
-              type="checkbox" 
-              id="race-ethnicity-native" 
-              name="race-ethnicity-native" 
-              value="Native Hawaiian or Pacific Islander" 
-              class="demographics-race-ethnicity incomplete"
-              oninput="
-                let demographicsRaceEthnicity = document.querySelectorAll(
-                  '.demographics-race-ethnicity'
-                );
-                for (let i = 0; i < demographicsRaceEthnicity.length; i++) {
-                  demographicsRaceEthnicity[i].classList.remove('incomplete');
-                };
-              "
-            >
-            <label for="race-ethnicity-native">Native Hawaiian or other Pacific Islander</label>
-          </div>
-          <div class="jspsych-survey-multi-choice-option">
-            <input 
-              type="checkbox" 
-              id="race-ethnicity-white" 
-              name="race-ethnicity-white" 
-              value="White" 
-              class="demographics-race-ethnicity incomplete"
-              oninput="
-                let demographicsRaceEthnicity = document.querySelectorAll(
-                  '.demographics-race-ethnicity'
-                );
-                for (let i = 0; i < demographicsRaceEthnicity.length; i++) {
-                  demographicsRaceEthnicity[i].classList.remove('incomplete');
-                };
-              "
-            >
-            <label for="race-ethnicity-white">White</label>
-          </div>
-          <div class="jspsych-survey-multi-choice-option">
-            <input 
-              type="checkbox" 
-              id="race-ethnicity-hispanic" 
-              name="race-ethnicity-hispanic" 
-              value="Hispanic/Latino/a/x" 
-              class="demographics-race-ethnicity incomplete"
-              oninput="
-                let demographicsRaceEthnicity = document.querySelectorAll(
-                  '.demographics-race-ethnicity'
-                );
-                for (let i = 0; i < demographicsRaceEthnicity.length; i++) {
-                  demographicsRaceEthnicity[i].classList.remove('incomplete');
-                };
-              "
-            >
-            <label for="race-ethnicity-hispanic">Hispanic/Latino/a/x</label>
-          </div>
-          <div class="jspsych-survey-multi-choice-option">
-            <input 
-              type="checkbox" 
-              id="race-ethnicity-other" 
-              name="race-ethnicity-other" 
-              value="Other" 
-              class="demographics-race-ethnicity incomplete"
-              oninput="
-                let demographicsRaceEthnicity = document.querySelectorAll(
-                  '.demographics-race-ethnicity'
-                );
-                for (let i = 0; i < demographicsRaceEthnicity.length; i++) {
-                  demographicsRaceEthnicity[i].classList.remove('incomplete');
-                };
-              "
-            >
-            <label for="race-ethnicity-other">Other</label>
-          </div>
-          <div class="jspsych-survey-multi-choice-option">
-            <input 
-              type="checkbox"
-              id="race-ethnicity-prefer-not" 
-              name="race-ethnicity-prefer-not" 
-              value="Prefer not to disclose" 
-              class="demographics-race-ethnicity incomplete"
-              oninput="
-                let demographicsRaceEthnicity = document.querySelectorAll(
-                  '.demographics-race-ethnicity'
-                );
-                for (let i = 0; i < demographicsRaceEthnicity.length; i++) {
-                  demographicsRaceEthnicity[i].classList.remove('incomplete');
-                };
-              "
-            >
-            <label for="race-ethnicity-prefer-not">Prefer not to disclose</label>
-          </div>
-        </div>
+    <!-- Race -->
+    <div class="jspsych-survey-multi-choice-question">
+      <legend>What is your race? (Select all that apply)</legend>
+      ${[
+        ['American Indian or Alaska Native','race-aian'],
+        ['Asian','race-asian'],
+        ['Black or African American','race-black'],
+        ['Native Hawaiian or Other Pacific Islander','race-nhpi'],
+        ['White','race-white']
+      ].map(([label, id]) => `
+      <div class="jspsych-survey-multi-choice-option">
+        <input type="checkbox" id="${id}" name="${id}" value="${label}"
+          class="race-input incomplete"
+          oninput="document.querySelectorAll('.race-input').forEach(el => el.classList.remove('incomplete'));">
+        <label for="${id}">${label}</label>
+      </div>`).join('')}
+      <div class="jspsych-survey-multi-choice-option">
+        <input type="checkbox" id="race-notlisted" name="race-notlisted" value="Not listed"
+          class="race-input incomplete"
+          oninput="
+            document.querySelectorAll('.race-input').forEach(el => el.classList.remove('incomplete'));
+            const box = document.getElementById('race-notlisted-box');
+            box.style.display = this.checked ? 'block' : 'none';
+            document.getElementById('race_notlisted_text').required = this.checked;
+          ">
+        <label for="race-notlisted">Not listed</label>
+      </div>
+      <div id="race-notlisted-box" style="display:none; margin-top:0.5em; margin-left:1.5em;">
+        <input type="text" id="race_notlisted_text" name="race_notlisted_text"
+          placeholder="Please describe"
+          style="width:300px; padding:4px;">
+      </div>
+    </div>
 
+    <!-- Ethnicity -->
+    <div class="jspsych-survey-multi-choice-question">
+      <legend>Are you Hispanic or Latino/a?</legend>
+      ${[['Yes, Hispanic or Latino/a','ethnicity-hispanic'],['No, not Hispanic or Latino/a','ethnicity-not-hispanic']].map(([label, id]) => `
+      <div class="jspsych-survey-multi-choice-option">
+        <input type="radio" id="${id}" name="ethnicity" value="${label}"
+          class="ethnicity-input incomplete"
+          oninput="document.querySelectorAll('.ethnicity-input').forEach(el => el.classList.remove('incomplete'));">
+        <label for="${id}">${label}</label>
+      </div>`).join('')}
+    </div>
 
-        <!-- Gender -->
-        
-        <div class="jspsych-survey-multi-choice-question">
-          <legend>With which gender do you most closely identify?</legend>
-          <div class="jspsych-survey-multi-choice-option">
-            <input 
-              type="radio" 
-              id="gender-man" 
-              name="gender" 
-              value="Man" 
-              class="demographics-gender incomplete"
-              oninput="
-                let demographicsGender = document.querySelectorAll(
-                  '.demographics-gender'
-                );
-                for (let i = 0; i < demographicsGender.length; i++) {
-                  demographicsGender[i].classList.remove('incomplete');
-                };
-              "
-            >
-            <label for="gender-man">Man</label>
-          </div>
-          <div class="jspsych-survey-multi-choice-option">
-            <input 
-              type="radio" 
-              id="gender-woman" 
-              name="gender" 
-              value="Woman" 
-              class="demographics-gender incomplete"
-              oninput="
-                let demographicsGender = document.querySelectorAll(
-                  '.demographics-gender'
-                );
-                for (let i = 0; i < demographicsGender.length; i++) {
-                  demographicsGender[i].classList.remove('incomplete');
-                };
-              "
-            >
-            <label for="gender-woman">Woman</label>
-          </div>
-          <div class="jspsych-survey-multi-choice-option">
-            <input 
-              type="radio" 
-              id="gender-non-binary" 
-              name="gender" 
-              value="Non-binary" 
-              class="demographics-gender incomplete"
-              oninput="
-                let demographicsGender = document.querySelectorAll(
-                  '.demographics-gender'
-                );
-                for (let i = 0; i < demographicsGender.length; i++) {
-                  demographicsGender[i].classList.remove('incomplete');
-                };
-              "
-            >
-            <label for="gender-non-binary">Non-binary</label>
-          </div>
-          <div class="jspsych-survey-multi-choice-option">
-            <input 
-              type="radio" 
-              id="gender-other" 
-              name="gender" 
-              value="Other" 
-              class="demographics-gender incomplete"
-              oninput="
-                let demographicsGender = document.querySelectorAll(
-                  '.demographics-gender'
-                );
-                for (let i = 0; i < demographicsGender.length; i++) {
-                  demographicsGender[i].classList.remove('incomplete');
-                };
-              "
-            >
-            <label for="gender-other">Other</label>
-          </div>
-          <div class="jspsych-survey-multi-choice-option">
-            <input 
-              type="radio" 
-              id="gender-prefer-not" 
-              name="gender" 
-              value="Prefer not to disclose" 
-              class="demographics-gender incomplete"
-              oninput="
-                let demographicsGender = document.querySelectorAll(
-                  '.demographics-gender'
-                );
-                for (let i = 0; i < demographicsGender.length; i++) {
-                  demographicsGender[i].classList.remove('incomplete');
-                };
-              "
-            >
-            <label for="gender-prefer-not">Prefer not to disclose</label>
-          </div>
-        </div>
+    <!-- Education -->
+    <div class="jspsych-survey-multi-choice-question">
+      <legend>What is the highest level of education you have completed?<br>
+        <small>(If currently enrolled, select the highest degree you have received so far.)</small>
+      </legend>
+      ${[
+        ['Less than a high school diploma','edu-lt-hs'],
+        ['High school diploma or equivalent (e.g. GED)','edu-hs'],
+        ['Some college, no degree','edu-some-college'],
+        ['Associate degree (e.g. AA, AS)','edu-associate'],
+        ['Bachelor\'s degree (e.g. BA, BS)','edu-bachelors'],
+        ['Graduate or professional degree (e.g. MA, MS, MBA, JD, MD, PhD)','edu-graduate']
+      ].map(([label, id]) => `
+      <div class="jspsych-survey-multi-choice-option">
+        <input type="radio" id="${id}" name="education" value="${label}"
+          class="education-input incomplete"
+          oninput="document.querySelectorAll('.education-input').forEach(el => el.classList.remove('incomplete'));">
+        <label for="${id}">${label}</label>
+      </div>`).join('')}
+    </div>
 
+    <!-- Income -->
+    <div class="jspsych-survey-multi-choice-question">
+      <legend>What is your annual household income before taxes?</legend>
+      ${[
+        ['Less than $25,000','income-lt25'],
+        ['$25,000 – $49,999','income-25-49'],
+        ['$50,000 – $74,999','income-50-74'],
+        ['$75,000 – $99,999','income-75-99'],
+        ['$100,000 – $149,999','income-100-149'],
+        ['$150,000 or more','income-150plus'],
+        ['Prefer not to say','income-pnts']
+      ].map(([label, id]) => `
+      <div class="jspsych-survey-multi-choice-option">
+        <input type="radio" id="${id}" name="income" value="${label}"
+          class="income-input incomplete"
+          oninput="document.querySelectorAll('.income-input').forEach(el => el.classList.remove('incomplete'));">
+        <label for="${id}">${label}</label>
+      </div>`).join('')}
+    </div>
 
-        <!-- Education -->
-        
-        <div class="jspsych-survey-multi-choice-question">
-          <legend>
-            What is the highest level of education you have received? 
-            (If you are currently enrolled in school, please indicate the highest degree you have received)
-          </legend>
-          <div class="jspsych-survey-multi-choice-option">
-            <input 
-              type="radio" 
-              id="education-less-high-school" 
-              name="education" 
-              value="Less than a high school diploma" 
-              class="demographics-education incomplete"
-              oninput="
-                let demographicsEducation = document.querySelectorAll(
-                  '.demographics-education'
-                );
-                for (let i = 0; i < demographicsEducation.length; i++) {
-                  demographicsEducation[i].classList.remove('incomplete');
-                };
-              "
-            >
-            <label for="education-less-high-school">
-              Less than a high school diploma
-            </label>
-          </div>
+    <!-- Political Affiliation -->
+    <div class="jspsych-survey-multi-choice-question">
+      <legend>Generally speaking, do you think of yourself as a…</legend>
+      ${[
+        ['Democrat','party-dem'],
+        ['Republican','party-rep'],
+        ['Independent','party-ind'],
+        ['Other party','party-other']
+      ].map(([label, id]) => `
+      <div class="jspsych-survey-multi-choice-option">
+        <input type="radio" id="${id}" name="party" value="${label}"
+          class="party-input incomplete"
+          oninput="
+            document.querySelectorAll('.party-input').forEach(el => el.classList.remove('incomplete'));
+            const val = this.value;
+            const strongQ  = document.getElementById('party-strength-q');
+            const leanQ    = document.getElementById('party-lean-q');
+            const strongLabel = document.getElementById('party-strength-label');
+            if (val === 'Democrat' || val === 'Republican') {
+              strongLabel.textContent = 'Would you call yourself a strong ' + val + ' or not a very strong ' + val + '?';
+              strongQ.style.display = 'block';
+              leanQ.style.display   = 'none';
+              document.querySelectorAll('.party-strength-input').forEach(el => { el.checked = false; el.required = true; });
+              document.querySelectorAll('.party-lean-input').forEach(el => { el.checked = false; el.required = false; });
+            } else {
+              strongQ.style.display = 'none';
+              leanQ.style.display   = 'block';
+              document.querySelectorAll('.party-lean-input').forEach(el => { el.checked = false; el.required = true; });
+              document.querySelectorAll('.party-strength-input').forEach(el => { el.checked = false; el.required = false; });
+            }
+          ">
+        <label for="${id}">${label}</label>
+      </div>`).join('')}
 
-          <div class="jspsych-survey-multi-choice-option">
-            <input 
-              type="radio" 
-              id="education-high-school" 
-              name="education" 
-              value="High school degree or equivalent (e.g. GED)" 
-              class="demographics-education incomplete"
-              oninput="
-                let demographicsEducation = document.querySelectorAll(
-                  '.demographics-education'
-                );
-                for (let i = 0; i < demographicsEducation.length; i++) {
-                  demographicsEducation[i].classList.remove('incomplete');
-                };
-              "
-            >
-            <label for="education-high-school">
-              High school degree or equivalent (e.g. GED)
-            </label>
-          </div>
+      <!-- Conditional: Strong / Not very strong (Democrat or Republican) -->
+      <div id="party-strength-q" style="display:none; margin-top:1em; margin-left:1.5em; padding:0.75em; background:#f8f8f8; border-left:3px solid #ccc;">
+        <legend id="party-strength-label" style="font-weight:normal;"></legend>
+        ${[
+          ['Strong','strength-strong'],
+          ['Not very strong','strength-not-strong']
+        ].map(([label, id]) => `
+        <div class="jspsych-survey-multi-choice-option">
+          <input type="radio" id="${id}" name="party_strength" value="${label}"
+            class="party-strength-input"
+            oninput="document.querySelectorAll('.party-strength-input').forEach(el => el.classList.remove('incomplete'));">
+          <label for="${id}">${label}</label>
+        </div>`).join('')}
+      </div>
 
-          <div class="jspsych-survey-multi-choice-option">
-            <input 
-              type="radio" 
-              id="education-some-college" 
-              name="education" 
-              value="Some college, no degree" 
-              class="demographics-education incomplete"
-              oninput="
-                let demographicsEducation = document.querySelectorAll(
-                  '.demographics-education'
-                );
-                for (let i = 0; i < demographicsEducation.length; i++) {
-                  demographicsEducation[i].classList.remove('incomplete');
-                };
-              "
-            >
-            <label for="education-some-college">
-              Some college, no degree
-            </label>
-          </div>
+      <!-- Conditional: Lean toward which party (Independent or Other) -->
+      <div id="party-lean-q" style="display:none; margin-top:1em; margin-left:1.5em; padding:0.75em; background:#f8f8f8; border-left:3px solid #ccc;">
+        <legend style="font-weight:normal;">Do you think of yourself as closer to the Republican Party or closer to the Democratic Party?</legend>
+        ${[
+          ['Closer to the Republican Party','lean-rep'],
+          ['Closer to the Democratic Party','lean-dem'],
+          ['Neither','lean-neither']
+        ].map(([label, id]) => `
+        <div class="jspsych-survey-multi-choice-option">
+          <input type="radio" id="${id}" name="party_lean" value="${label}"
+            class="party-lean-input"
+            oninput="document.querySelectorAll('.party-lean-input').forEach(el => el.classList.remove('incomplete'));">
+          <label for="${id}">${label}</label>
+        </div>`).join('')}
+      </div>
+    </div>
 
-          <div class="jspsych-survey-multi-choice-option">
-            <input 
-              type="radio" 
-              id="education-associate" 
-              name="education" 
-              value="Associate Degree (e.g. AA, AS)" 
-              class="demographics-education incomplete"
-              oninput="
-                let demographicsEducation = document.querySelectorAll(
-                  '.demographics-education'
-                );
-                for (let i = 0; i < demographicsEducation.length; i++) {
-                  demographicsEducation[i].classList.remove('incomplete');
-                };
-              "
-            >
-            <label for="education-associate">
-              Associate Degree (e.g. AA, AS)
-            </label>
-          </div>
-
-          <div class="jspsych-survey-multi-choice-option">
-            <input 
-              type="radio" 
-              id="education-bachelors" 
-              name="education" 
-              value="Bachelor's Degree (e.g. BA, BS)" 
-              class="demographics-education incomplete"
-              oninput="
-                let demographicsEducation = document.querySelectorAll(
-                  '.demographics-education'
-                );
-                for (let i = 0; i < demographicsEducation.length; i++) {
-                  demographicsEducation[i].classList.remove('incomplete');
-                };
-              "
-            >
-            <label for="education-bachelors">
-              Bachelor's Degree (e.g. BA, BS)
-            </label>
-          </div>
-          
-          <div class="jspsych-survey-multi-choice-option">
-            <input 
-              type="radio" 
-              id="education-postgraduate" 
-              name="education" 
-              value="Postgraduate Degree (e.g. Master's Degree, Professional Degree, Doctorate Degree)" 
-              class="demographics-education incomplete"
-              oninput="
-                let demographicsEducation = document.querySelectorAll(
-                  '.demographics-education'
-                );
-                for (let i = 0; i < demographicsEducation.length; i++) {
-                  demographicsEducation[i].classList.remove('incomplete');
-                };
-              "
-            >
-            <label for="education-postgraduate">
-              Postgraduate Degree (e.g. Master's Degree, Professional Degree, Doctorate Degree)
-            </label>
-          </div>
-        </div>
-        
-        <style id="jspsych-survey-multi-choice-css">
-          .jspsych-survey-multi-choice-question { 
-            margin-top: 2em; 
-            margin-bottom: 2em; 
-            text-align: left; 
-          } .jspsych-survey-multi-choice-option { 
-            font-size: 10pt; 
-            line-height: 2; 
-          } .jspsych-survey-multi-choice-horizontal 
-            .jspsych-survey-multi-choice-option { 
-            display: inline-block; 
-            margin-left: 1em; 
-            margin-right: 1em; 
-            vertical-align: top; 
-            text-align: center; 
-          } label.jspsych-survey-multi-choice-text input[type='radio'] {
-            margin-right: 1em;
-          }
-        </style>
-      `,
-      button_label: 'Next',
-      required: true,
-      on_load: function() {
-        window.scrollTo(0, 0);
-      },
-  on_finish: function (data) {
-    let demographicsData = data.response;
-
-    // Age
-    const age = Number(demographicsData['age']);
-
-    // Gender
-    let gender = '';
-    if (demographicsData['gender-man']) {
-      gender = 'Man';
-    } else if (demographicsData['gender-woman']) {
-      gender = 'Woman';
-    } else if (demographicsData['gender-non-binary']) {
-      gender = 'Non-Binary';
-    } else if (demographicsData['gender-other']) {
-      gender = 'Other';
-    }
-
-    // Create a new object with the formatted data
-    demographicsData = {
-      age: age,
-      race_ethnicity_indigenous: demographicsData['race-ethnicity-indigenous'],
-      race_ethnicity_asian: demographicsData['race-ethnicity-asian'],
-      race_ethnicity_black: demographicsData['race-ethnicity-black'],
-      race_ethnicity_native: demographicsData['race-ethnicity-native'],
-      race_ethnicity_white: demographicsData['race-ethnicity-white'],
-      race_ethnicity_hispanic: demographicsData['race-ethnicity-hispanic'],
-      race_ethnicity_other: demographicsData['race-ethnicity-other'],
-      race_ethnicity_na: demographicsData['race-ethnicity-prefer-not'],
-      gender: gender
-    };
-
-    jsPsych.data
-      .getDataByTimelineNode(jsPsych.getCurrentTimelineNodeID())
-      .addToAll(demographicsData);
+    <style>
+      .jspsych-survey-multi-choice-question { margin-top:2em; margin-bottom:2em; text-align:left; }
+      .jspsych-survey-multi-choice-option { font-size:10pt; line-height:2; }
+    </style>
+  `,
+  button_label: 'Next',
+  on_load: function() { window.scrollTo(0, 0); },
+  on_finish: function(data) {
+    const r = data.response;
+    jsPsych.data.addProperties({
+      age: Number(r.age),
+      gender: r.gender,
+      gender_selfdescribe: r.gender_selfdescribe || '',
+      race_aian:    r['race-aian']     ? true : false,
+      race_asian:   r['race-asian']    ? true : false,
+      race_black:   r['race-black']    ? true : false,
+      race_nhpi:    r['race-nhpi']     ? true : false,
+      race_white:   r['race-white']    ? true : false,
+      race_notlisted: r['race-notlisted'] ? true : false,
+      race_notlisted_text: r.race_notlisted_text || '',
+      ethnicity:    r.ethnicity,
+      education:    r.education,
+      income:       r.income,
+      party:        r.party,
+      party_strength: r.party_strength || '',
+      party_lean:   r.party_lean || ''
+    });
   }
 };
 
 timeline.push(demographicsQuestions);
 
-
-const politicsQuestions = {
-  type: jsPsychSurveyMultiChoice,
-  questions: [
-    {
-      name: 'political-ideology-economic',
-      prompt: `
-            <p class="jspsych-survey-multi-choice-question">
-              Which response best captures your political beliefs surrounding <strong>economic</strong> issues?
-            </p>`,
-      options: politicalResponses,
-      horizontal: true
-    },
-    {
-      name: 'political-ideology-social',
-      prompt: `
-            <p class="jspsych-survey-multi-choice-question">
-              Which response best captures your political beliefs surrounding <strong>social</strong> issues?
-            </p>`,
-      options: politicalResponses,
-      horizontal: true
-    },
-    {
-      name: 'political-ideology-overall',
-      prompt: `
-            <p class="jspsych-survey-multi-choice-question">
-              Which response best captures your <strong>overall</strong> political beliefs?
-            </p>`,
-      options: politicalResponses,
-      horizontal: true
-    }
-  ],
-  preamble: `
-        <p class="jspsych-survey-multi-choice-preamble">
-          Please answer the following questions about your political ideology:
-        </p>`,
-        request_response: true, // We should require response
-        on_load: function() {
-          window.scrollTo(0, 0);
-        },
-        on_finish: function (data) {
-          let politicalData = data.response;
-
-    politicalData = {
-      political_ideology_economic: politicalData['political-ideology-economic'],
-      political_ideology_social: politicalData['political-ideology-social'],
-      political_ideology_overall: politicalData['political-ideology-overall']
-    };
-
-    jsPsych.data
-      .getDataByTimelineNode(jsPsych.getCurrentTimelineNodeID())
-      .addToAll(politicalData);
-  }
-};
-
-timeline.push(politicsQuestions);
-
-
-const demandEffectsQuestions = {
-  type: jsPsychSurveyMultiChoice,
-  questions: [
-    {
-      name: 'pressure',
-      prompt:
-        `<p class="jspsych-survey-multi-choice-question">
-            Did you feel pressure to respond in a particular way to any of the questions?
-          </p>`,
-      options: demandEffectsResponses,
-      horizontal: true
-    },
-    {
-      name: 'judgment',
-      prompt:
-        `<p class="jspsych-survey-multi-choice-question">
-            Did you feel as though you might be judged for your responses to the questions you answered?
-          </p>`,
-      options: demandEffectsResponses,
-      horizontal: true
-    }
-  ],
-  randomize_question_order: true,
-  required: true,
-  scale_width: 500,
-  preamble:
-    `<p class="jspsych-survey-multi-choice-preamble">
-        For these final questions, please answer as honestly as you can.
-        The answers to these questions will <strong>not</strong> affect whether or not you receive credit/payment for participation!
-      </p>`,
-      on_load: function() {
-        window.scrollTo(0, 0);
-      },
-  on_finish: function (data) {
-    let demandEffectsData = data.response;
-
-    demandEffectsData = {
-      pressure: demandEffectsData['pressure'],
-      judgment: demandEffectsData['judgment']
-    };
-
-    jsPsych.data
-      .getDataByTimelineNode(jsPsych.getCurrentTimelineNodeID())
-      .addToAll(demandEffectsData);
-  }
-};
-
-timeline.push(demandEffectsQuestions);
-
-
-// Guess Study Purpose / Questions + Comments
+// Self-reported sampling strategy and feedback
 const feedback = {
   type: jsPsychSurveyText,
   questions: [
     {
-      name: 'guess-study-purpose',
-      prompt: 'What do you think this study was about?',
+      name: 'sampling-explanation',
+      prompt: 'Why did you choose to view the records that you chose?',
       columns: 100,
       rows: 10
     },
@@ -1704,7 +1357,7 @@ const feedback = {
     let purposeFeedbackData = data.response;
 
     purposeFeedbackData = {
-      guess_study_purpose: purposeFeedbackData['guess-study-purpose'],
+      sampling_explanation: purposeFeedbackData['sampling-explanation'],
       feedback: purposeFeedbackData['feedback']
     };
 
