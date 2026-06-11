@@ -58,7 +58,7 @@ var jsPsychSelectionLearning = (function (jspsych) {
                         <h2>Additional Information</h2>
                         <p>Investigators have released additional information about the incident.
 						Which information would you like to view?</p>
-						<p>Click on an avatar to see the record they represent. You can view as many as you like before moving on.</p>
+						<p>You can view as many records as you like before moving on.</p>
 					</div>
 				</div>` +
 				`<div id="trial-presentation-space" class="popup"></div><div id="overlay"></div>` +
@@ -135,7 +135,7 @@ var jsPsychSelectionLearning = (function (jspsych) {
 			const samplingPromptContainer = $('#prompt-container');
 			samplingPromptContainer.html(`
 				<strong id="samplingPrompt" style="text-transform: uppercase;">
-					click on an investigator to view their record
+					click on a record below
 				</strong>
 				<br>
 				<span style="text-transform: uppercase;">

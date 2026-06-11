@@ -872,44 +872,36 @@ const consentForm = {
 
 timeline.push(consentForm);
 
-// Pre-intervention instructions
-const preIntInstructions = {
-  type: jsPsychInstructions,
-  pages: [`
-        <p style="text-align: left;">
-          Thank you for agreeing to participate.
-        </p>
-        <p style="text-align: left;">
-        On the next page, you will receive some information.
-        Please read the information carefully before continuing to the main task.
-        </p>`
-      ],
-      show_clickable_nav: true,
-      on_load: function() {
-        window.scrollTo(0, 0);
-      }
-    };
-
-// Pre-intervention instructions
-timeline.push(preIntInstructions);
-
 
 
 // Sampling instructions //
 // Added 5 second delay to force reading
 const preSamplingInstructions = {
   type: jsPsychInstructions,
-  pages: [`
-    <p style="text-align: left; line-height: 1.6;">
-      Thank you! Now you will view some ficticuous headlines for "next week's news".
-      </p>
-      <p style="text-align: left; line-height: 1.6;">
-  After you tell us your thoughts about the event, you will have the opportunity to see some additional information.
-  </p>
-  <p style="text-align: left; line-height: 1.6;">
-    You can choose to view as much or as little information as you'd like, including no information.
-    </p>`
-      ],
+  pages: [
+    `<div style="max-width:750px; margin:auto; text-align:left; line-height:1.8;">
+      <h2 style="text-align:center;">Welcome</h2>
+      <p>Thank you for agreeing to participate in this study.</p>
+      <p>In this study, you will read a series of <strong>news headlines from next week's news</strong> — short reports about incidents involving public infrastructure and safety systems in the United States.</p>
+      <p>For each headline, you will be asked to rate <strong>how close you think the incident came to becoming a major catastrophe</strong>.</p>
+      <p>After making your initial rating, you will have the opportunity to browse additional investigative records about the incident before rating it one more time.</p>
+      <p>Please read each headline carefully before responding.</p>
+    </div>`,
+    `<div style="max-width:750px; margin:auto; text-align:left; line-height:1.8;">
+      <h2 style="text-align:center;">The Investigative Records</h2>
+      <p>After reading each headline, you will be shown a grid of records. Each record contains additional information about the incident.</p>
+      <p>There are two types of records:</p>
+      <div style="background:#fff3cd; border-left:4px solid #e6a817; padding:0.9em 1.2em; margin:1em 0;">
+        <strong>Vulnerability Records</strong><br>
+        These records contain information about <em>how close the catastrophe came to happening</em> — for example: the number of safety systems that failed, expert assessments of risk, or internal warnings that were ignored.
+      </div>
+      <div style="background:#d4edda; border-left:4px solid #28a745; padding:0.9em 1.2em; margin:1em 0;">
+        <strong>Resilience Records</strong><br>
+        These records contain information explaining why the catastrophe <em>did not occur</em> — for example: which backup procedures were activated, how many safety systems remained functioning, or records of successful responses to similar past incidents.
+      </div>
+      <p>You can view as many or as few records as you like before making your second rating. You are free to browse records from both types, just one type, or none at all by clicking "I don't want to view any records" at the top of the screen.</p>
+    </div>`
+  ],
       show_clickable_nav: true,
       on_load: function() {
         window.scrollTo(0, 0);
@@ -1108,70 +1100,6 @@ trials.forEach((claimIndex) => {
   timeline.push(postBelief);
 });
 
-// Post-sampling belief ratings for only the selected trials
-// VACCINE INTENTIONS
-const vaxxInt = {
-  type: jsPsychSurveyMultiChoice,
-  preamble: `<p>Now, please imagine that a new type of mRNA vaccine has been developed that can offer broad protection against a variety of infectious diseases, such as new strains of the flu, common cold viruses, and other emerging pathogens. This general mRNA vaccine is designed to be updated regularly to adapt to new threats, similar to how current flu vaccines are updated each year.</p>
-  <p>Clinical trials have shown that the vaccine is highly effective, with common side effects like mild fever, headache, or fatigue lasting a few days after the injection. It would be administered once a year and could significantly reduce the chances of getting sick from seasonal viruses and other infections.</p>
-  <p>Given this information, please answer the following questions regarding your willingness to get this vaccine.</p>`,
-  questions: [
-    {
-      name: `vaxxInt1`,
-      prompt: `<blockquote>How likely are you to get the general mRNA vaccine if it becomes available?</blockquote>`,
-      options: ["1 - Very Unlikely", "2", "3", "4", "5", "6", "7 - Very Likely"],
-      required: true,
-      horizontal: true,
-    },
-    {
-      name: `vaxxInt2`,
-      prompt: `<blockquote>How beneficial do you think the general mRNA vaccine would be for your overall health?</blockquote>`,
-      options: ["1 - Not Very Beneficial", "2", "3", "4", "5", "6", "7 - Very Beneficial"],
-      required: true,
-      horizontal: true,
-    },
-    {
-      name: `vaxxInt3`,
-      prompt: `<blockquote>If the general mRNA vaccine were recommended by healthcare providers, how likely would you be to follow this recommendation?</blockquote>`,
-      options: ["1 - Very Unlikely", "2", "3", "4", "5", "6", "7 - Very Likely"],
-      required: true,
-      horizontal: true,
-    },
-    {
-      name: `vaxxInt4`,
-      prompt: `<blockquote>How likely would you be to encourage others (family, friends) to get the general mRNA vaccine?</blockquote>`,
-      options: ["1 - Very Unlikely", "2", "3", "4", "5", "6", "7 - Very Likely"],
-      required: true,
-      horizontal: true,
-    }
-  ],
-  randomize_question_order: false,
-  on_load: function() {
-    window.scrollTo(0, 0);
-    const nextButton = document.querySelector('#jspsych-survey-multi-choice-next');
-    nextButton.disabled = true;
-
-    const checkResponses = () => {
-      const responses = document.querySelectorAll('.jspsych-survey-multi-choice-question');
-      let allAnswered = true;
-      responses.forEach(response => {
-        const options = response.querySelectorAll('input[type="radio"]');
-        const answered = Array.from(options).some(option => option.checked);
-        if (!answered) {
-          allAnswered = false;
-        }
-      });
-      nextButton.disabled = !allAnswered;
-    };
-
-    document.querySelectorAll('input[type="radio"]').forEach(input => {
-      input.addEventListener('change', checkResponses);
-    });
-  }
-};
-
-// Post-sampling belief
-timeline.push(vaxxInt);
 
 // DEMOGRAPHICS //
 const demographicsQuestions = {
@@ -1642,7 +1570,7 @@ const demographicsQuestions = {
   }
 };
 
-// timeline.push(demographicsQuestions);
+timeline.push(demographicsQuestions);
 
 
 const politicsQuestions = {
@@ -1699,7 +1627,7 @@ const politicsQuestions = {
   }
 };
 
-// timeline.push(politicsQuestions);
+timeline.push(politicsQuestions);
 
 
 const demandEffectsQuestions = {
@@ -1749,7 +1677,7 @@ const demandEffectsQuestions = {
   }
 };
 
-// timeline.push(demandEffectsQuestions);
+timeline.push(demandEffectsQuestions);
 
 
 // Guess Study Purpose / Questions + Comments
@@ -1786,7 +1714,7 @@ const feedback = {
   }
 }
 
-// timeline.push(feedback);
+timeline.push(feedback);
 
 
 // DEBRIEF FORM
@@ -1829,7 +1757,7 @@ const debriefForm = {
   choices: ["Next"],
 };
 
-// timeline.push(debriefForm);
+timeline.push(debriefForm);
 
 
 // Exit fullscreen
