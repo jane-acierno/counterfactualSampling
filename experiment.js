@@ -815,9 +815,8 @@ const consentForm = {
         <li>You must be at least 18 years old to take part in this research.</li>
         <li>The study will take approximately 15 minutes to complete.</li>
         <li>You will receive approximately $12/hr for your participation in the study.</li>
-        <li>The possible risks or discomforts of the study are minimal. You may feel uncomfortable reflecting on and answering some questions.</li>
-        <li>There are no direct benefits for participating in the study.</li>
-        <li>Your part in this study will be handled in a confidential manner. 
+        <li>The possible risks or discomforts of the study are minimal.</li>
+        <li>There are no direct benefits for participating in the study.
       </ul>
       <p>
         Your part in this study will be handled in a confidential manner. 
