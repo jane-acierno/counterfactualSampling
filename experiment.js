@@ -1517,7 +1517,7 @@ const save_data = {
     const results = jsPsych.data.get().csv();
     jsPsych.endExperiment(
       `<p class="jspsych-center">
-        Thanks for completing the first half of the experiment! You will be redirected to Qualtrics to complete the remainder of the study in <span id="countdown">5</span> seconds.
+        Thanks for taking our study! You will be redirected to Prolific in <span id="countdown">5</span> seconds.
       </p>`
     );
 
