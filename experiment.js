@@ -1489,7 +1489,7 @@ const exitFullscreen = {
 timeline.push(exitFullscreen);
 
 // Choose from among these to relay via DataPipe
-const preregisteredExperimentId = "pTWSMZwhLgng"; 
+const preregisteredExperimentId = "sp40BpNeTGsM"; 
 const debugExperimentId = "XyR978iH6AOX";
 
 // DataPipe conclude data collection
@@ -1522,7 +1522,7 @@ const save_data = {
     );
 
     setTimeout(function () {
-      window.location.href = "https://neu.co1.qualtrics.com/jfe/form/SV_2i3DAsAHEfa4rga";
+      window.location.href = "https://app.prolific.com/submissions/complete?cc=CNN3F4P4"; //JANE REPLACE WITH PROLIFIC CODE
     }, 5000);
   }
 };
