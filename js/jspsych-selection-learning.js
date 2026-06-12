@@ -53,7 +53,6 @@ var jsPsychSelectionLearning = (function (jspsych) {
 		trial(display_element, trial) {
             display_element.innerHTML += `
 			<div id="jspsych-instructions">
-				<div id="jspsych-selection-advance-btngroup" style="text-align:right; margin-bottom: 12px;"></div>
                     <div class="quote">
                         <h2>Additional Information</h2>
                         <p>Investigators have released additional information about the incident.
@@ -160,15 +159,6 @@ var jsPsychSelectionLearning = (function (jspsych) {
 
 			let selectedresponseTexts = [];
 
-			var advanceButton = `<button class="jspsych-btn">I don't want to view any records</button>`
-			$('#jspsych-selection-advance-btngroup').append(
-				$(advanceButton).attr('id', 'jspsych-selection-advance-btn')
-					.data('choice', 1)
-					.addClass('jspsych-selection-advance-btn')
-					.on('click', function (e) {
-						endTrial();
-					})
-			);
 
 			let startTime = (new Date()).getTime();
 

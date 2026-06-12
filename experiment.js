@@ -807,7 +807,7 @@ const consentForm = {
   type: jsPsychSurveyHtmlForm,
   preamble: '<h2 style="text-align: center"><strong>Request to Participate in Research</strong></h2>',
   html: `
-    <div style="text-align: left; max-width: 800px; margin: auto;">
+    <div style="text-align: left;">
       <p>
         We would like to invite you to take part in an online research project. The purpose of this research is to investigate how people seek information about political news. As part of this research, you will be asked to answer questions about yourself. 
       </p>
@@ -878,7 +878,7 @@ timeline.push(consentForm);
 const preSamplingInstructions = {
   type: jsPsychInstructions,
   pages: [
-    `<div style="max-width:750px; margin:auto; text-align:left; line-height:1.8;">
+    `<div style="text-align:left; line-height:1.8;">
       <h2 style="text-align:center;">Welcome</h2>
       <p>Thank you for agreeing to participate in this study.</p>
       <p>In this study, you will read a series of <strong>news headlines from next week's news</strong> — short reports about incidents involving public infrastructure and safety systems in the United States.</p>
@@ -886,7 +886,7 @@ const preSamplingInstructions = {
       <p>After making your initial rating, you will have the opportunity to browse additional investigative records about the incident before rating it one more time.</p>
       <p>Please read each headline carefully before responding.</p>
     </div>`,
-    `<div style="max-width:750px; margin:auto; text-align:left; line-height:1.8;">
+    `<div style="text-align:left; line-height:1.8;">
       <h2 style="text-align:center;">The Investigative Records</h2>
       <p>After reading each headline, you will be shown a grid of records. Each record contains additional information about the incident.</p>
       <p>There are two types of records:</p>
@@ -981,7 +981,7 @@ trials.forEach((claimIndex) => {
   const scenarioPage = {
     type: jsPsychHtmlButtonResponse,
     stimulus: `
-      <div style="text-align: left; max-width: 750px; margin: auto;">
+      <div style="text-align: left;">
         <p style="font-size:0.9em; color:#666; margin-bottom:0.25em; text-transform:uppercase; letter-spacing:0.05em;">
           Next Week's News
         </p>
@@ -1004,7 +1004,7 @@ trials.forEach((claimIndex) => {
   const preBelief = {
     type: jsPsychHtmlSliderResponse,
     stimulus: `
-      <div style="max-width: 750px; margin: auto;">
+      <div style="width:100%;">
         <p>Based on what you have just read, how close do you think this event came to actually occurring?</p>
       </div>`,
     labels: ["Did not come close at all", "Came extremely close"],
@@ -1063,7 +1063,7 @@ trials.forEach((claimIndex) => {
   const postBelief = {
     type: jsPsychHtmlSliderResponse,
     stimulus: `
-      <div style="text-align: left; max-width: 750px; margin: auto;">
+      <div style="text-align: left;">
         <p style="font-size:0.9em; color:#666; margin-bottom:0.25em; text-transform:uppercase; letter-spacing:0.05em;">
           Next Week's News
         </p>
@@ -1100,69 +1100,6 @@ trials.forEach((claimIndex) => {
 });
 
 
-// VOTING INTENTIONS
-// senatorPool contains exactly the 8 senators shown during the paradigm, in the order they were assigned (paired with trialSenators).
-// We generate one question per senator, asking how likely the participant would be to vote for them if they ran for re-election.
-
-const voteOptions = [
-  'Definitely would not vote for them',
-  'Probably would not vote for them',
-  'Might or might not vote for them',
-  'Probably would vote for them',
-  'Definitely would vote for them'
-];
-
-const senatorVotingIntentions = {
-  type: jsPsychSurveyHtmlForm,
-  preamble: `
-    <p class="jspsych-survey-multi-choice-preamble">
-      During the study, you read about incidents in which a senator was mentioned.
-      For each senator listed below, please indicate how likely you would be to vote
-      for them if they ran for re-election to the U.S. Senate. Disregard whether you
-      are actually eligible to vote for that senator.
-    </p>`,
-  html: (() => {
-    // Build one question block per senator in senatorPool
-    const blocks = senatorPool.map((senator, i) => {
-      const safeName = `senator_vote_${i}`;
-      const optionHtml = voteOptions.map((opt, j) => `
-        <div class="jspsych-survey-multi-choice-option">
-          <input type="radio" id="${safeName}_${j}" name="${safeName}" value="${opt}"
-            class="${safeName}-input incomplete"
-            oninput="document.querySelectorAll('.${safeName}-input').forEach(el => el.classList.remove('incomplete'));">
-          <label for="${safeName}_${j}">${opt}</label>
-        </div>`).join('');
-
-      return `
-        <div class="jspsych-survey-multi-choice-question">
-          <legend>If <strong>${senator}</strong> ran for re-election to the U.S. Senate,
-            how likely would you be to vote for them?</legend>
-          ${optionHtml}
-        </div>`;
-    });
-
-    return blocks.join('') + `
-      <style>
-        .jspsych-survey-multi-choice-question { margin-top:2em; margin-bottom:2em; text-align:left; }
-        .jspsych-survey-multi-choice-option { font-size:10pt; line-height:2; }
-      </style>`;
-  })(),
-  button_label: 'Next',
-  on_load: function() { window.scrollTo(0, 0); },
-  on_finish: function(data) {
-    const r = data.response;
-    const props = {};
-    senatorPool.forEach((senator, i) => {
-      // Store both the senator name and their vote intention so data is self-contained
-      props[`senator_vote_name_${i}`] = senator;
-      props[`senator_vote_intent_${i}`] = r[`senator_vote_${i}`] || '';
-    });
-    jsPsych.data.addProperties(props);
-  }
-};
-
-timeline.push(senatorVotingIntentions);
-
 
 // DEMOGRAPHICS //
 const demographicsQuestions = {
@@ -1174,9 +1111,13 @@ const demographicsQuestions = {
     <div class="jspsych-survey-multi-choice-question">
       <legend>How old are you?</legend>
       <input type="number" id="age" name="age" min="18" max="100"
-        style="padding:5px; width:70px;"
+        required
+        style="padding:5px; width:70px; -moz-appearance:textfield;"
         class="incomplete"
-        oninput="this.classList.remove('incomplete');">
+        oninput="this.value=this.value.replace(/[^0-9]/g,''); this.classList.remove('incomplete');">
+      <style>
+        #age::-webkit-outer-spin-button, #age::-webkit-inner-spin-button { -webkit-appearance:none; margin:0; }
+      </style>
     </div>
 
     <!-- Gender -->
@@ -1436,7 +1377,7 @@ timeline.push(feedback);
 const debriefForm = {
   type: jsPsychHtmlButtonResponse,
   stimulus: `
-    <div style="text-align: left; max-width: 800px; margin: auto;">
+    <div style="text-align: left;">
     <h2 style="text-align: center"><strong>Debriefing Sheet</strong></h2>
     <h3 style="text-align: center"><strong>Processing health information</strong></h3>
     <h3 style="text-align: center"><strong>Northeastern University IRB # 20-12-16</strong></h3>
