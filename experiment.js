@@ -807,7 +807,7 @@ const consentForm = {
   type: jsPsychSurveyHtmlForm,
   preamble: '<h2 style="text-align: center"><strong>Request to Participate in Research</strong></h2>',
   html: `
-    <div style="text-align: left;">
+    <div style="text-align: left; max-width: 800px; margin: auto;">
       <p>
         We would like to invite you to take part in an online research project. The purpose of this research is to investigate how people seek information about political news. As part of this research, you will be asked to answer questions about yourself. 
       </p>
@@ -878,7 +878,7 @@ timeline.push(consentForm);
 const preSamplingInstructions = {
   type: jsPsychInstructions,
   pages: [
-    `<div style="text-align:left; line-height:1.8;">
+    `<div style="max-width:750px; margin:auto; text-align:left; line-height:1.8;">
       <h2 style="text-align:center;">Welcome</h2>
       <p>Thank you for agreeing to participate in this study.</p>
       <p>In this study, you will read a series of <strong>news headlines from next week's news</strong> — short reports about incidents involving public infrastructure and safety systems in the United States.</p>
@@ -886,7 +886,7 @@ const preSamplingInstructions = {
       <p>After making your initial rating, you will have the opportunity to browse additional investigative records about the incident before rating it one more time.</p>
       <p>Please read each headline carefully before responding.</p>
     </div>`,
-    `<div style="text-align:left; line-height:1.8;">
+    `<div style="max-width:750px; margin:auto; text-align:left; line-height:1.8;">
       <h2 style="text-align:center;">The Investigative Records</h2>
       <p>After reading each headline, you will be shown a grid of records. Each record contains additional information about the incident.</p>
       <p>There are two types of records:</p>
@@ -981,7 +981,7 @@ trials.forEach((claimIndex) => {
   const scenarioPage = {
     type: jsPsychHtmlButtonResponse,
     stimulus: `
-      <div style="text-align: left;">
+      <div style="text-align: left; max-width: 750px; margin: auto;">
         <p style="font-size:0.9em; color:#666; margin-bottom:0.25em; text-transform:uppercase; letter-spacing:0.05em;">
           Next Week's News
         </p>
@@ -1004,7 +1004,7 @@ trials.forEach((claimIndex) => {
   const preBelief = {
     type: jsPsychHtmlSliderResponse,
     stimulus: `
-      <div style="width:100%;">
+      <div style="max-width: 750px; margin: auto;">
         <p>Based on what you have just read, how close do you think this event came to actually occurring?</p>
       </div>`,
     labels: ["Did not come close at all", "Came extremely close"],
@@ -1063,7 +1063,7 @@ trials.forEach((claimIndex) => {
   const postBelief = {
     type: jsPsychHtmlSliderResponse,
     stimulus: `
-      <div style="text-align: left;">
+      <div style="text-align: left; max-width: 750px; margin: auto;">
         <p style="font-size:0.9em; color:#666; margin-bottom:0.25em; text-transform:uppercase; letter-spacing:0.05em;">
           Next Week's News
         </p>
@@ -1377,7 +1377,7 @@ timeline.push(feedback);
 const debriefForm = {
   type: jsPsychHtmlButtonResponse,
   stimulus: `
-    <div style="text-align: left;">
+    <div style="text-align: left; max-width: 800px; margin: auto;">
     <h2 style="text-align: center"><strong>Debriefing Sheet</strong></h2>
     <h3 style="text-align: center"><strong>Processing health information</strong></h3>
     <h3 style="text-align: center"><strong>Northeastern University IRB # 20-12-16</strong></h3>
