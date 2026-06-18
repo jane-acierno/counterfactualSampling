@@ -92,10 +92,10 @@ const claimScenarios = [
         levels remained stable throughout the incident. The failure has focused attention
         on <strong>${senator}</strong>, who three years ago authored an amendment — later
         signed into law — that extended the required sensor recalibration cycle at federally
-        managed dams from 18 months to 36 months, citing cost savings for the Army Corps.
-        The sensors that malfunctioned had last been calibrated 26 months before the incident,
-        a timeline that would have triggered a mandatory inspection under the previous standard
-        but was compliant under the amended rules. 
+        managed dams from 18 months to 36 months. The sensors that malfunctioned had last 
+        been calibrated 26 months before the incident, a timeline that would have triggered 
+        a mandatory inspection under the previous standard but was compliant under the amended 
+        rules. 
       </p>`,
     setupOnly: `
       <p style="text-align:left;line-height:1.8;">
@@ -114,7 +114,7 @@ const claimScenarios = [
         advisory for residents to use bottled water while treatment facilities were inspected.
         Officials said the contamination did not exceed federal action thresholds and was
         resolved within 48 hours. The incident has intensified criticism of
-        <strong>${senator}</strong>, who last Congress blocked the Safe Drinking Water
+        <strong>${senator}</strong>, who last year blocked the Safe Drinking Water
         Modernization Act — legislation that would have required real-time contaminant
         monitoring at municipal treatment facilities — calling it federal overreach into
         local water management. Under the existing framework, which relies on monthly
@@ -165,11 +165,10 @@ const claimScenarios = [
         successfully blocked the Hospital Cybersecurity Standards Act — a bill that would
         have mandated minimum cybersecurity requirements, including regular third-party
         audits, for hospitals receiving federal Medicare and Medicaid funding.
-        <strong>${senator}</strong> had argued the bill would create an unfunded compliance
+        <strong>${senator}</strong> had argued the bill would create a compliance
         burden for rural hospitals. Investigators have noted that the hospital network had
         not undergone an independent cybersecurity audit in over three years at the time
-        of the attack, and that four high-severity vulnerabilities identified in an
-        earlier internal review remained unresolved.
+        of the attack.
       </p>`,
     setupOnly: `
       <p style="text-align:left;line-height:1.8;">
