@@ -240,7 +240,6 @@ const claimScenarios = [
         levels remained within acceptable limits. The incident has intensified criticism of
         <strong>${senator}</strong>, who last year led the passage of the Nuclear Regulatory
         Relief Act, which reduced the frequency of mandatory NRC software validation
-        inspections at commercial nuclear facilities from annually to once every three years,
         arguing that excessive regulatory oversight was slowing the expansion of nuclear energy.
         The facility had not received an NRC software validation inspection in 28 months at
         the time of the firmware error — a timeline that would have required inspection
@@ -1317,26 +1316,6 @@ const demographicsQuestions = {
       </div>`).join('')}
     </div>
 
-    <!-- Income -->
-    <div class="jspsych-survey-multi-choice-question">
-      <legend>What is your annual household income before taxes?</legend>
-      ${[
-        ['Less than $25,000','income-lt25'],
-        ['$25,000 – $49,999','income-25-49'],
-        ['$50,000 – $74,999','income-50-74'],
-        ['$75,000 – $99,999','income-75-99'],
-        ['$100,000 – $149,999','income-100-149'],
-        ['$150,000 or more','income-150plus'],
-        ['Prefer not to say','income-pnts']
-      ].map(([label, id]) => `
-      <div class="jspsych-survey-multi-choice-option">
-        <input type="radio" id="${id}" name="income" value="${label}"
-          class="income-input incomplete"
-          oninput="document.querySelectorAll('.income-input').forEach(el => el.classList.remove('incomplete'));">
-        <label for="${id}">${label}</label>
-      </div>`).join('')}
-    </div>
-
     <!-- Political Affiliation -->
     <div class="jspsych-survey-multi-choice-question">
       <legend>Generally speaking, do you think of yourself as a…</legend>
@@ -1425,7 +1404,6 @@ const demographicsQuestions = {
       race_notlisted_text: r.race_notlisted_text || '',
       ethnicity:    r.ethnicity,
       education:    r.education,
-      income:       r.income,
       party:        r.party,
       party_strength: r.party_strength || '',
       party_lean:   r.party_lean || ''
