@@ -46,10 +46,14 @@ const claimScenarios = [
         Federal officials reported that a software malfunction temporarily disrupted monitoring
         systems used to manage portions of the nation's electrical grid. Operators identified
         the problem and restored normal functionality before any power outages occurred.
-        Several weeks earlier, <strong>${senator}</strong>, chair of a Senate oversight committee
-        responsible for infrastructure preparedness, had publicly stated that existing safeguards
-        were sufficient to prevent major disruptions. Following the incident, <strong>${senator}</strong>
-        called for an investigation into what happened.
+        The incident has renewed scrutiny of <strong>${senator}</strong>, who two years ago
+        led the successful effort to strip mandatory software patch compliance requirements
+        from the federal Grid Modernization Act, arguing the rules imposed unnecessary costs
+        on energy companies. Investigators have noted that the grid management software
+        involved in the incident had been awaiting a critical stability patch for 18 months
+        at the time of the malfunction. Following the incident, <strong>${senator}</strong>
+        defended the deregulatory measure and called for an investigation focused on the
+        grid operator rather than federal oversight standards.
       </p>`,
     setupOnly: `
       <p style="text-align:left;line-height:1.8;">
@@ -67,11 +71,14 @@ const claimScenarios = [
         Federal aviation authorities reported that a software glitch caused a brief lapse in
         radar coverage at a major air traffic control facility, forcing controllers to rely on
         backup procedures for approximately 20 minutes. No aircraft were in danger and all
-        flights landed safely. Several weeks earlier, <strong>${senator}</strong>, chair of a
-        Senate aviation oversight subcommittee, had stated publicly that the nation's air
-        traffic control infrastructure was adequately maintained and posed no safety risk.
-        Following the incident, <strong>${senator}</strong> announced plans to convene an
-        emergency hearing on aviation system reliability.
+        flights landed safely. The incident has drawn attention to <strong>${senator}</strong>,
+        who last year spearheaded a 12% cut to the FAA's air traffic control technology
+        modernization budget, redirecting the funds toward rural airport infrastructure grants.
+        The radar software upgrade that would have addressed the glitch — listed as a priority
+        project in the FAA's capital plan — was among the programs deferred as a result of
+        that budget reallocation. Following the incident, <strong>${senator}</strong> said the
+        funding shift reflected the priorities of constituents and questioned whether the
+        FAA had managed its remaining budget efficiently.
       </p>`,
     setupOnly: `
       <p style="text-align:left;line-height:1.8;">
@@ -90,11 +97,15 @@ const claimScenarios = [
         The Army Corps of Engineers reported that sensor equipment used to monitor water
         pressure and structural stress at a large federally managed dam malfunctioned for
         several hours before engineers noticed and switched to manual monitoring. Water
-        levels remained stable throughout the incident. Several weeks earlier,
-        <strong>${senator}</strong>, chair of a Senate subcommittee on water infrastructure,
-        had said that federal dam monitoring systems met all current safety standards.
-        Following the incident, <strong>${senator}</strong> requested a full audit of
-        monitoring equipment at federally managed dams nationwide.
+        levels remained stable throughout the incident. The failure has focused attention
+        on <strong>${senator}</strong>, who three years ago authored an amendment — later
+        signed into law — that extended the required sensor recalibration cycle at federally
+        managed dams from 18 months to 36 months, citing cost savings for the Army Corps.
+        The sensors that malfunctioned had last been calibrated 26 months before the incident,
+        a timeline that would have triggered a mandatory inspection under the previous standard
+        but was compliant under the amended rules. Following the incident,
+        <strong>${senator}</strong> said the amendment had saved taxpayers millions and that
+        the malfunction was an isolated equipment failure unrelated to the calibration schedule.
       </p>`,
     setupOnly: `
       <p style="text-align:left;line-height:1.8;">
@@ -114,10 +125,16 @@ const claimScenarios = [
         byproduct in the drinking water supply of a mid-sized city, triggering a precautionary
         advisory for residents to use bottled water while treatment facilities were inspected.
         Officials said the contamination did not exceed federal action thresholds and was
-        resolved within 48 hours. Several weeks earlier, <strong>${senator}</strong>, chair of
-        the Senate Environment and Public Works Committee, had publicly defended the current
-        federal framework for municipal water safety as robust and sufficient. Following the
-        advisory, <strong>${senator}</strong> called for updated water testing protocols.
+        resolved within 48 hours. The incident has intensified criticism of
+        <strong>${senator}</strong>, who last Congress blocked the Safe Drinking Water
+        Modernization Act — legislation that would have required real-time contaminant
+        monitoring at municipal treatment facilities — calling it federal overreach into
+        local water management. Under the existing framework, which relies on monthly
+        batch testing, the malfunctioning chlorine dosing pump responsible for the
+        contamination had been operating at 40% above its target concentration for an
+        estimated 11 days before detection. Following the advisory,
+        <strong>${senator}</strong> argued the existing testing system had worked as designed
+        since contamination was caught before reaching the federal action threshold.
       </p>`,
     setupOnly: `
       <p style="text-align:left;line-height:1.8;">
@@ -135,12 +152,16 @@ const claimScenarios = [
       <p style="text-align:left;line-height:1.8;">
         FEMA disclosed that a technical failure prevented the national emergency alert system
         from transmitting a test broadcast to approximately 30% of mobile devices in three
-        states. The failure was identified within minutes and no real emergency was active at
-        the time. Several weeks earlier, <strong>${senator}</strong>, chair of a Senate
-        homeland security subcommittee, had asserted that the nation's emergency alert
-        infrastructure was fully operational and ready to perform under real-world conditions.
-        Following the failure, <strong>${senator}</strong> urged FEMA to accelerate a planned
-        system upgrade.
+        states. The failure was identified within minutes and no real emergency was active
+        at the time. The breakdown has renewed scrutiny of <strong>${senator}</strong>,
+        who eighteen months ago led the effort to cut $340 million from FEMA's Integrated
+        Public Alert and Warning System modernization fund, arguing the program was
+        duplicative and over-budget. The cell broadcast server infrastructure that failed
+        during the test — identified in FEMA's capital plan as requiring urgent replacement —
+        was among the systems whose upgrades were deferred following the funding cut.
+        Following the failure, <strong>${senator}</strong> said FEMA should have prioritized
+        critical hardware within its existing budget and that the funding reduction had
+        not caused the problem.
       </p>`,
     setupOnly: `
       <p style="text-align:left;line-height:1.8;">
@@ -159,11 +180,15 @@ const claimScenarios = [
         temporarily knocked several administrative systems offline at a network of regional
         hospitals. Patient care was not disrupted and clinical records remained secure, but
         billing and scheduling systems were unavailable for approximately 18 hours.
-        Several weeks earlier, <strong>${senator}</strong>, chair of the Senate Health
-        Committee's cybersecurity task force, had stated that federally funded hospitals had
-        made sufficient progress in hardening their digital infrastructure against cyber
-        threats. Following the attack, <strong>${senator}</strong> introduced legislation
-        requiring mandatory cybersecurity audits for hospitals receiving federal funding.
+        The attack has drawn scrutiny to <strong>${senator}</strong>, who last session
+        successfully blocked the Hospital Cybersecurity Standards Act — a bill that would
+        have mandated minimum cybersecurity requirements, including regular third-party
+        audits, for hospitals receiving federal Medicare and Medicaid funding.
+        <strong>${senator}</strong> had argued the bill would create an unfunded compliance
+        burden for rural hospitals. Investigators have noted that the hospital network had
+        not undergone an independent cybersecurity audit in over three years at the time
+        of the attack, and that four high-severity vulnerabilities identified in an
+        earlier internal review remained unresolved.
       </p>`,
     setupOnly: `
       <p style="text-align:left;line-height:1.8;">
@@ -181,13 +206,18 @@ const claimScenarios = [
     headline: (senator) => `
       <p style="text-align:left;line-height:1.8;">
         The National Transportation Safety Board reported that a signal system failure caused
-        two freight trains to be routed onto the same track segment for approximately
-        four minutes before operators intervened and halted both trains. No collision
-        occurred and no injuries were reported. Several weeks earlier,
-        <strong>${senator}</strong>, chair of the Senate Commerce Committee's rail safety
-        panel, had stated that the nation's rail signaling infrastructure met all federal
-        safety requirements. Following the incident, <strong>${senator}</strong> announced
-        a review of signal system inspection standards.
+        two freight trains to be routed onto the same track segment for approximately four
+        minutes before operators intervened and halted both trains. No collision occurred
+        and no injuries were reported. The incident has brought renewed attention to
+        <strong>${senator}</strong>, who two years ago secured a three-year congressional
+        exemption from Positive Train Control installation requirements for freight operators
+        on low-volume corridors, citing the technology's cost. PTC — an automated system
+        that would have detected the conflicting signal and stopped both trains without
+        dispatcher intervention — was absent on the corridor where the incident occurred
+        precisely because of that exemption. Following the incident,
+        <strong>${senator}</strong> said PTC was not the only path to rail safety and that
+        the dispatcher's successful intervention demonstrated the effectiveness of
+        existing procedures.
       </p>`,
     setupOnly: `
       <p style="text-align:left;line-height:1.8;">
@@ -207,12 +237,17 @@ const claimScenarios = [
         generating facility provided erroneous readings for approximately six hours due to
         a firmware error, requiring operators to switch to manual monitoring protocols.
         Plant safety systems functioned normally throughout the incident and radiation
-        levels remained within acceptable limits. Several weeks earlier,
-        <strong>${senator}</strong>, chair of the Senate Environment and Public Works
-        Committee's nuclear oversight panel, had said that the NRC's monitoring requirements
-        were sufficient to ensure plant safety. Following the incident,
-        <strong>${senator}</strong> requested a briefing from the NRC on sensor reliability
-        standards.
+        levels remained within acceptable limits. The incident has intensified criticism of
+        <strong>${senator}</strong>, who last year led the passage of the Nuclear Regulatory
+        Relief Act, which reduced the frequency of mandatory NRC software validation
+        inspections at commercial nuclear facilities from annually to once every three years,
+        arguing that excessive regulatory oversight was slowing the expansion of nuclear energy.
+        The facility had not received an NRC software validation inspection in 28 months at
+        the time of the firmware error — a timeline that would have required inspection
+        under the previous annual standard. Following the incident,
+        <strong>${senator}</strong> said the legislation had not compromised safety and
+        that the firmware error reflected a vendor quality-control issue, not a gap
+        in federal oversight.
       </p>`,
     setupOnly: `
       <p style="text-align:left;line-height:1.8;">
