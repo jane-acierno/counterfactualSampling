@@ -51,17 +51,13 @@ const claimScenarios = [
         from the federal Grid Modernization Act, arguing the rules imposed unnecessary costs
         on energy companies. Investigators have noted that the grid management software
         involved in the incident had been awaiting a critical stability patch for 18 months
-        at the time of the malfunction. Following the incident, <strong>${senator}</strong>
-        defended the deregulatory measure and called for an investigation focused on the
-        grid operator rather than federal oversight standards.
+        at the time of the malfunction. 
       </p>`,
     setupOnly: `
       <p style="text-align:left;line-height:1.8;">
         Federal officials reported that a software malfunction temporarily disrupted monitoring
         systems used to manage portions of the nation's electrical grid. Operators identified
         the problem and restored normal functionality before any power outages occurred.
-        Following the incident, a Senate oversight committee called for an investigation
-        into what happened.
       </p>`
   },
   // 1 — Air traffic control error
@@ -76,18 +72,14 @@ const claimScenarios = [
         modernization budget, redirecting the funds toward rural airport infrastructure grants.
         The radar software upgrade that would have addressed the glitch — listed as a priority
         project in the FAA's capital plan — was among the programs deferred as a result of
-        that budget reallocation. Following the incident, <strong>${senator}</strong> said the
-        funding shift reflected the priorities of constituents and questioned whether the
-        FAA had managed its remaining budget efficiently.
+        that budget reallocation. 
       </p>`,
     setupOnly: `
       <p style="text-align:left;line-height:1.8;">
         Federal aviation authorities reported that a software glitch caused a brief lapse in
         radar coverage at a major air traffic control facility, forcing controllers to rely on
         backup procedures for approximately 20 minutes. No aircraft were in danger and all
-        flights landed safely. Following the incident, the Senate aviation oversight
-        subcommittee announced plans to convene an emergency hearing on aviation system
-        reliability.
+        flights landed safely. 
       </p>`
   },
   // 2 — Dam monitoring failure
@@ -103,18 +95,14 @@ const claimScenarios = [
         managed dams from 18 months to 36 months, citing cost savings for the Army Corps.
         The sensors that malfunctioned had last been calibrated 26 months before the incident,
         a timeline that would have triggered a mandatory inspection under the previous standard
-        but was compliant under the amended rules. Following the incident,
-        <strong>${senator}</strong> said the amendment had saved taxpayers millions and that
-        the malfunction was an isolated equipment failure unrelated to the calibration schedule.
+        but was compliant under the amended rules. 
       </p>`,
     setupOnly: `
       <p style="text-align:left;line-height:1.8;">
         The Army Corps of Engineers reported that sensor equipment used to monitor water
         pressure and structural stress at a large federally managed dam malfunctioned for
         several hours before engineers noticed and switched to manual monitoring. Water
-        levels remained stable throughout the incident. Following the incident, the Senate
-        subcommittee on water infrastructure requested a full audit of monitoring equipment
-        at federally managed dams nationwide.
+        levels remained stable throughout the incident. 
       </p>`
   },
   // 3 — Drinking water contamination
@@ -132,9 +120,7 @@ const claimScenarios = [
         local water management. Under the existing framework, which relies on monthly
         batch testing, the malfunctioning chlorine dosing pump responsible for the
         contamination had been operating at 40% above its target concentration for an
-        estimated 11 days before detection. Following the advisory,
-        <strong>${senator}</strong> argued the existing testing system had worked as designed
-        since contamination was caught before reaching the federal action threshold.
+        estimated 11 days before detection. 
       </p>`,
     setupOnly: `
       <p style="text-align:left;line-height:1.8;">
@@ -142,8 +128,7 @@ const claimScenarios = [
         byproduct in the drinking water supply of a mid-sized city, triggering a precautionary
         advisory for residents to use bottled water while treatment facilities were inspected.
         Officials said the contamination did not exceed federal action thresholds and was
-        resolved within 48 hours. Following the advisory, the Senate Environment and Public
-        Works Committee called for updated water testing protocols.
+        resolved within 48 hours. 
       </p>`
   },
   // 4 — Emergency alert system failure
@@ -159,17 +144,13 @@ const claimScenarios = [
         duplicative and over-budget. The cell broadcast server infrastructure that failed
         during the test — identified in FEMA's capital plan as requiring urgent replacement —
         was among the systems whose upgrades were deferred following the funding cut.
-        Following the failure, <strong>${senator}</strong> said FEMA should have prioritized
-        critical hardware within its existing budget and that the funding reduction had
-        not caused the problem.
       </p>`,
     setupOnly: `
       <p style="text-align:left;line-height:1.8;">
         FEMA disclosed that a technical failure prevented the national emergency alert system
         from transmitting a test broadcast to approximately 30% of mobile devices in three
-        states. The failure was identified within minutes and no real emergency was active at
-        the time. Following the failure, the Senate homeland security subcommittee urged
-        FEMA to accelerate a planned system upgrade.
+        states. The failure was identified within minutes and no real emergency was active
+        at the time. 
       </p>`
   },
   // 5 — Hospital network cyberattack
@@ -196,9 +177,6 @@ const claimScenarios = [
         temporarily knocked several administrative systems offline at a network of regional
         hospitals. Patient care was not disrupted and clinical records remained secure, but
         billing and scheduling systems were unavailable for approximately 18 hours.
-        Following the attack, the Senate Health Committee's cybersecurity task force
-        introduced legislation requiring mandatory cybersecurity audits for hospitals
-        receiving federal funding.
       </p>`
   },
   // 6 — Railroad signal failure
@@ -214,19 +192,14 @@ const claimScenarios = [
         on low-volume corridors, citing the technology's cost. PTC — an automated system
         that would have detected the conflicting signal and stopped both trains without
         dispatcher intervention — was absent on the corridor where the incident occurred
-        precisely because of that exemption. Following the incident,
-        <strong>${senator}</strong> said PTC was not the only path to rail safety and that
-        the dispatcher's successful intervention demonstrated the effectiveness of
-        existing procedures.
+        precisely because of that exemption. 
       </p>`,
     setupOnly: `
       <p style="text-align:left;line-height:1.8;">
         The National Transportation Safety Board reported that a signal system failure caused
-        two freight trains to be routed onto the same track segment for approximately
-        four minutes before operators intervened and halted both trains. No collision
-        occurred and no injuries were reported. Following the incident, the Senate Commerce
-        Committee's rail safety panel announced a review of signal system inspection
-        standards.
+        two freight trains to be routed onto the same track segment for approximately four
+        minutes before operators intervened and halted both trains. No collision occurred
+        and no injuries were reported. 
       </p>`
   },
   // 7 — Nuclear plant monitoring error
@@ -243,10 +216,7 @@ const claimScenarios = [
         arguing that excessive regulatory oversight was slowing the expansion of nuclear energy.
         The facility had not received an NRC software validation inspection in 28 months at
         the time of the firmware error — a timeline that would have required inspection
-        under the previous annual standard. Following the incident,
-        <strong>${senator}</strong> said the legislation had not compromised safety and
-        that the firmware error reflected a vendor quality-control issue, not a gap
-        in federal oversight.
+        under the previous annual standard. 
       </p>`,
     setupOnly: `
       <p style="text-align:left;line-height:1.8;">
@@ -254,9 +224,7 @@ const claimScenarios = [
         generating facility provided erroneous readings for approximately six hours due to
         a firmware error, requiring operators to switch to manual monitoring protocols.
         Plant safety systems functioned normally throughout the incident and radiation
-        levels remained within acceptable limits. Following the incident, the Senate
-        Environment and Public Works Committee requested a briefing from the NRC on sensor
-        reliability standards.
+        levels remained within acceptable limits. 
       </p>`
   }
 ];
